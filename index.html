@@ -220,6 +220,9 @@ body::before {
   animation: fadeUp 0.6s 0.7s ease both;
 }
 </style>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
 <div class="container">
@@ -279,5 +282,14 @@ body::before {
   <div class="footer">Trailhead &mdash; Built for Ben</div>
 
 </div>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js")
+      .then(r => console.log("SW registered:", r.scope))
+      .catch(e => console.log("SW error:", e));
+  });
+}
+</script>
 </body>
 </html>
